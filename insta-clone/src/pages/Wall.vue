@@ -6,7 +6,7 @@
 
 <script>
 import Post from "@/components/Post";
-import fakeData from "@./../fakeData.json";
+import fakeData from "@/fakeData.json";
 
 export default {
   // тут говорим, что будем использовать эти компоненты
@@ -15,8 +15,7 @@ export default {
     Post
   },
 
-  data() {
-    // это данные поста
+  data() {// это данные поста    
     return {
       posts: fakeData.posts
     };

@@ -4,7 +4,7 @@
     <div class="header">
       <div class="container">
         <div class="header__row">
-          <a href="index.html" class="header__logo">
+          <a href="/index.html" class="header__logo">
             <i class="fab fa-dev"></i>
           </a>
 

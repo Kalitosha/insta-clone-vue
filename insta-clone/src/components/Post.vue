@@ -3,13 +3,14 @@
     <div class="post__header">
       <div class="post__user">
         <div class="user">
-          <a href="#" class="user__avatar">
+          <router-link :to="`/post/${data.id}/edit`" class="user__avatar"> 
+          <!-- <router-link> вместо тега <a> -->          
             <img :src="data.user.ava" alt=""/>
             <!--было src="img/avatars/01.png" -->
-          </a>
-          <a href="#" class="user__name">
+          </router-link>
+          <router-link :to="`/post/${data.id}/edit`" class="user__name">
             {{ data.user.name }} {{ data.user.surname }}
-          </a>
+          </router-link>
         </div>
       </div>
 
@@ -19,7 +20,7 @@
           Delete
         </a>
 
-        <a href="edit.html" class="edit-link">
+        <a href="/edit.html" class="edit-link">
           <i class="fas fa-pencil-alt"></i>
           Edit
         </a>
@@ -63,7 +64,7 @@
       <Comment v-for="comment of data.comments" :data="comment" v-bind:key="comment.id" ></Comment>
       <div class="post-comment">
         <a href="#" class="post-comment__avatar">
-          <img src="img/avatars/01.png" alt="" />
+          <img src="/img/avatars/01.png" alt="" />
         </a>
         <div class="post-comment__text">
           <a href="#" class="post-comment__name">John Golt</a> Lorem ipsum dolor
@@ -75,7 +76,7 @@
 
       <div class="post-comment">
         <a href="#" class="post-comment__avatar">
-          <img src="img/avatars/01.png" alt="" />
+          <img src="/img/avatars/01.png" alt="" />
         </a>
         <div class="post-comment__text">
           <a href="#" class="post-comment__name">John Golt</a> Lorem ipsum dolor
@@ -87,7 +88,7 @@
 
       <div class="post-comment">
         <a href="#" class="post-comment__avatar">
-          <img src="img/avatars/01.png" alt="" />
+          <img src="/img/avatars/01.png" alt="" />
         </a>
         <div class="post-comment__text">
           <a href="#" class="post-comment__name">John Golt</a> Lorem ipsum dolor
@@ -99,7 +100,7 @@
 
       <div class="post-comment">
         <a href="#" class="post-comment__avatar">
-          <img src="img/avatars/01.png" alt="" />
+          <img src="/img/avatars/01.png" alt="" />
         </a>
         <div class="post-comment__text">
           <a href="#" class="post-comment__name">John Golt</a> Lorem ipsum dolor
