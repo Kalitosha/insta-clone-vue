@@ -23,16 +23,17 @@
       <div class="post__edit">
         <div class="post__edit-name">Описание:</div>
         <div class="post__edit-textarea-wrapper">
-            <textarea class="post__edit-textarea" v-model="post.description"></textarea>
+          <textarea
+            class="post__edit-textarea"
+            v-model="post.description"
+          ></textarea>
         </div>
       </div>
 
       <div class="post__edit">
         <div class="post__edit-name">Хэштеги:</div>
         <div class="post__edit-textarea-wrapper">
-          <textarea class="post__edit-textarea"  v-model="post.tags">
-            
-          </textarea>
+          <textarea class="post__edit-textarea" v-model="post.tags"> </textarea>
         </div>
       </div>
 
@@ -46,24 +47,35 @@
 
 <script>
 export default {
-    created(){ // при запуске вью будем запрашивать из бд посты и искать с нужным нам id //lifehooke
-        const posts = require("@/fakeData.json").posts;
-console.log(posts);
+  async created() {
+    // при запуске вью будем запрашивать из {бд (в сторе)} посты и искать с нужным нам id //lifehooke
+    this.post = await this.$store.dispatch("getPostById", this.postId)
+
+    //или так
+    /*created() {
+      this.$store.dispatch("getPostById", this.postId)
+    .then(post => this.post = post);*/
+ 
+
+    /*const posts = require("@/fakeData.json").posts;
         for(const post of posts){
             if(post.id === this.postId){
                 this.post = post;
             }
-        }
-    },
-    data(){
-        return{
-            post:null
-        }
-    },
-    computed: {// вычисляемые св-ва
-        postId(){
-            return parseInt(this.$route.params.id) // router - наш маршрутизатор, route - текущий путь
-        }
+        }*/
+  },
+  data() {
+    return {
+      post: null
+    };
+  },
+
+  computed: {
+    // вычисляемые св-ва
+    postId() {
+      return parseInt(this.$route.params.id); // router - наш маршрутизатор, route - текущий путь
     }
+  }
+
 };
 </script>

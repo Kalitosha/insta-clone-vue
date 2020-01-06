@@ -6,7 +6,7 @@
 
 <script>
 import Post from "@/components/Post";
-import fakeData from "@/fakeData.json";
+//import fakeData from "@/fakeData.json";
 
 export default {
   // тут говорим, что будем использовать эти компоненты
@@ -15,11 +15,23 @@ export default {
     Post
   },
 
-  data() {// это данные поста    
-    return {
-      posts: fakeData.posts
-    };
+  created(){ // при создании поста вызываем это
+    this.$store.dispatch('downloadPosts')
+  },
+
+  
+  // data() {// это данные поста    //это было до store/vuex
+  //   return {
+  //     posts: fakeData.posts
+  //   };
+  // },
+
+  computed: {
+    posts(){
+      return this.$store.state.posts
+    }
   }
+
 };
 </script>
 
