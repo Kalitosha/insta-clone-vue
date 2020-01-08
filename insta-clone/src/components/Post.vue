@@ -14,16 +14,21 @@
         </div>
       </div>
 
-      <div class="post__links">
+      <div class="post__links">        
         <a href="#" class="edit-link">
           <i class="far fa-trash-alt"></i>
           Delete
         </a>
 
+        <router-link :to="`/post/${data.id}/edit`" class="edit-link">
+          <i class="fas fa-pencil-alt"></i>
+            Edit
+        </router-link>
+        <!--было
         <a href="/edit.html" class="edit-link">
           <i class="fas fa-pencil-alt"></i>
           Edit
-        </a>
+        </a> -->
       </div>
     </div>
 

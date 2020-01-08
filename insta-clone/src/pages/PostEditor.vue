@@ -38,7 +38,7 @@
       </div>
 
       <div class="post__buttons">
-        <button class="btn btn--save">Сохранить</button>
+        <button v-on:click="btnSave" class="btn btn--save">Сохранить</button>
         <button class="btn btn--cancel">Отмена</button>
       </div>
     </div>
@@ -49,13 +49,12 @@
 export default {
   async created() {
     // при запуске вью будем запрашивать из {бд (в сторе)} посты и искать с нужным нам id //lifehooke
-    this.post = await this.$store.dispatch("getPostById", this.postId)
+    this.post = await this.$store.dispatch("getPostById", this.postId);
 
     //или так
     /*created() {
       this.$store.dispatch("getPostById", this.postId)
     .then(post => this.post = post);*/
- 
 
     /*const posts = require("@/fakeData.json").posts;
         for(const post of posts){
@@ -70,12 +69,27 @@ export default {
     };
   },
 
+  methods: {
+    btnSave: function () {
+      
+      const data = {
+        id: this.post.id,
+        description: this.post.description,
+        tags: this.post.tags
+      }
+
+      this.$store.dispatch("updatePost2", data)
+      .then(console.log('good'));
+    }
+  },
+
   computed: {
     // вычисляемые св-ва
     postId() {
       return parseInt(this.$route.params.id); // router - наш маршрутизатор, route - текущий путь
     }
   }
+
 
 };
 </script>
